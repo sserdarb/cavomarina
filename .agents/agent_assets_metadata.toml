@@ -1,0 +1,62 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "ILY9OOjUtj_xfI_J9oBbS"
+uri = "file://artifacts/cavomarina/public/images/hero.png"
+type = "image"
+title = "Hero infinity pool beach"
+
+[[generated]]
+id = "fYS4CfxHPIrQFF5sySibM"
+uri = "file://artifacts/cavomarina/public/images/about-1.png"
+type = "image"
+title = "Hotel exterior"
+
+[[generated]]
+id = "waWgUsdU1WgRjBuek8I80"
+uri = "file://artifacts/cavomarina/public/images/about-2.png"
+type = "image"
+title = "Beachfront dining"
+
+[[generated]]
+id = "Z6Dm2cvJZ2DoXQCwZvUuJ"
+uri = "file://artifacts/cavomarina/public/images/room-1.png"
+type = "image"
+title = "Comfort swim up room"
+
+[[generated]]
+id = "xj3W5RlXzowo66yaWqlu4"
+uri = "file://artifacts/cavomarina/public/images/room-2.png"
+type = "image"
+title = "Superior swim up room"
+
+[[generated]]
+id = "vbxzqdZR9sBqMkhzOpu_9"
+uri = "file://artifacts/cavomarina/public/images/room-3.png"
+type = "image"
+title = "Mountain view room"
+
+[[generated]]
+id = "P9l6ot5RwnA6q6TkCHvhO"
+uri = "file://artifacts/cavomarina/public/images/room-4.png"
+type = "image"
+title = "Rooftop penthouse"
+
+[[generated]]
+id = "GmdX0urV2zgnZN0hmAgx8"
+uri = "file://artifacts/cavomarina/public/images/gallery-1.png"
+type = "image"
+title = "Infinity pool gallery"
+
+[[generated]]
+id = "_KRU-qnK8mXAJHyIncMhR"
+uri = "file://artifacts/cavomarina/public/images/gallery-2.png"
+type = "image"
+title = "Sandy beach gallery"
+
+[[generated]]
+id = "pFMK4IeUKZa9lXODv4W2R"
+uri = "file://artifacts/cavomarina/public/images/gallery-3.png"
+type = "image"
+title = "Spa wellness gallery"
