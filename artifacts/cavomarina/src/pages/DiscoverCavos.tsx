@@ -202,6 +202,109 @@ const RESTAURANTS = [
   },
 ];
 
+const WEATHER_MONTHS = [
+  { month: "Jan", high: 14, low: 8,  sea: null, icon: "🌧️", quality: "cold" },
+  { month: "Feb", high: 15, low: 8,  sea: null, icon: "🌦️", quality: "cold" },
+  { month: "Mar", high: 17, low: 10, sea: null, icon: "🌤️", quality: "mild" },
+  { month: "Apr", high: 21, low: 13, sea: 18,   icon: "⛅", quality: "mild",  hotelOpen: true },
+  { month: "May", high: 26, low: 17, sea: 21,   icon: "🌤️", quality: "warm",  hotelOpen: true },
+  { month: "Jun", high: 31, low: 21, sea: 23,   icon: "☀️", quality: "hot",   hotelOpen: true, best: true },
+  { month: "Jul", high: 34, low: 24, sea: 26,   icon: "☀️", quality: "hot",   hotelOpen: true, best: true },
+  { month: "Aug", high: 34, low: 24, sea: 27,   icon: "☀️", quality: "hot",   hotelOpen: true, best: true },
+  { month: "Sep", high: 30, low: 20, sea: 25,   icon: "🌤️", quality: "warm",  hotelOpen: true, best: true },
+  { month: "Oct", high: 24, low: 16, sea: 22,   icon: "⛅", quality: "warm",  hotelOpen: true },
+  { month: "Nov", high: 19, low: 13, sea: null, icon: "🌦️", quality: "mild" },
+  { month: "Dec", high: 15, low: 9,  sea: null, icon: "🌧️", quality: "cold" },
+];
+
+const TEMP_COLOR: Record<string, string> = {
+  cold: "bg-blue-50 border-blue-200 text-blue-800",
+  mild: "bg-teal-50 border-teal-200 text-teal-800",
+  warm: "bg-amber-50 border-amber-200 text-amber-800",
+  hot:  "bg-orange-50 border-orange-200 text-orange-800",
+};
+const TEMP_BAR: Record<string, string> = {
+  cold: "bg-blue-300",
+  mild: "bg-teal-400",
+  warm: "bg-amber-400",
+  hot:  "bg-orange-500",
+};
+
+const LOCAL_EVENTS = [
+  {
+    months: "Feb – Mar",
+    title: "Corfu Carnival",
+    desc: "One of Greece's most spectacular carnivals — a month of masquerade balls, satirical floats, and street revelry culminating in the Grand Parade through Corfu Town.",
+    icon: "🎭",
+    type: "Festival",
+    color: "bg-purple-100 text-purple-700 border-purple-200",
+    accent: "bg-purple-500",
+  },
+  {
+    months: "Apr – May",
+    title: "Orthodox Easter",
+    desc: "Corfu celebrates Easter unlike anywhere else in Greece. On Holy Saturday morning, locals hurl clay pots from balconies to ward off evil spirits — a unique island tradition followed by candlelit midnight processions.",
+    icon: "🕯️",
+    type: "Religious",
+    color: "bg-amber-100 text-amber-700 border-amber-200",
+    accent: "bg-amber-500",
+  },
+  {
+    months: "May 11",
+    title: "Saint Spyridon Day",
+    desc: "The patron saint of Corfu is celebrated four times a year with solemn processions through the Old Town, but the May 11th feast is the grandest — featuring the golden reliquary carried by priests in ornate vestments.",
+    icon: "⛪",
+    type: "Religious",
+    color: "bg-amber-100 text-amber-700 border-amber-200",
+    accent: "bg-amber-500",
+  },
+  {
+    months: "Jun – Sep",
+    title: "Kavos Beach Season",
+    desc: "Kavos comes alive every summer with open-air beach bars, outdoor concerts, DJ nights, and a vibrant waterfront scene stretching along the long sandy beach just steps from Cavomarina.",
+    icon: "🏖️",
+    type: "Seasonal",
+    color: "bg-sky-100 text-sky-700 border-sky-200",
+    accent: "bg-sky-500",
+  },
+  {
+    months: "July",
+    title: "Corfu International Festival",
+    desc: "A prestigious summer celebration of music, theatre, and dance with performances by Greek and international artists across Corfu Town's historic venues — from the Old Fortress to the Municipal Theatre.",
+    icon: "🎶",
+    type: "Cultural",
+    color: "bg-rose-100 text-rose-700 border-rose-200",
+    accent: "bg-rose-500",
+  },
+  {
+    months: "August",
+    title: "Lefkimmi Wine Festival",
+    desc: "Just north of Kavos, the village of Lefkimmi celebrates the summer harvest with traditional music, local food stalls, and free-flowing Corfiote wine in a warm, authentic Greek village atmosphere.",
+    icon: "🍷",
+    type: "Festival",
+    color: "bg-purple-100 text-purple-700 border-purple-200",
+    accent: "bg-purple-500",
+  },
+  {
+    months: "September",
+    title: "Corfu Film Festival",
+    desc: "The Corfu International Film Festival screens independent and arthouse films under the stars in open-air venues — an intimate cinematic experience in one of the Mediterranean's most beautiful settings.",
+    icon: "🎬",
+    type: "Cultural",
+    color: "bg-rose-100 text-rose-700 border-rose-200",
+    accent: "bg-rose-500",
+  },
+  {
+    months: "Oct 28",
+    title: "OXI Day",
+    desc: "Greece's national 'No' Day commemorates the refusal to surrender in 1940. Corfu marks the occasion with military parades, folk dances, and flag-raising ceremonies — a proud display of Greek spirit.",
+    icon: "🇬🇷",
+    type: "National",
+    color: "bg-teal-100 text-teal-700 border-teal-200",
+    accent: "bg-teal-500",
+  },
+];
+
 const PRACTICAL_INFO_META: { icon: string; titleKey: TKey; contentKey: TKey }[] = [
   { icon: "✈️", titleKey: "pi1_title", contentKey: "pi1_content" },
   { icon: "🚗", titleKey: "pi2_title", contentKey: "pi2_content" },
@@ -469,6 +572,8 @@ const NAV_SECTION_IDS: { id: string; labelKey: TKey }[] = [
   { id: "sights", labelKey: "dc_nav_sights" },
   { id: "itineraries", labelKey: "dc_nav_itineraries" },
   { id: "where-to-eat", labelKey: "dc_nav_eat" },
+  { id: "weather", labelKey: "dc_nav_weather" },
+  { id: "events", labelKey: "dc_nav_events" },
   { id: "practical-info", labelKey: "dc_nav_practical" },
 ];
 
@@ -741,6 +846,169 @@ export default function DiscoverCavos() {
                   <h4 className="font-bold text-gray-900 text-base mb-1 group-hover:text-primary transition-colors">{r.name}</h4>
                   <p className="text-xs text-primary font-semibold mb-2">{r.cuisines.join(", ")}</p>
                   <p className="text-sm text-gray-500 leading-relaxed flex-1 line-clamp-3">{r.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Weather & Climate ────────────────────────────────────────────────── */}
+      <section id="weather" className="py-16 md:py-20 bg-white">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="flex items-center gap-3 mb-10">
+            <div className="w-10 h-10 rounded-xl bg-sky-100 flex items-center justify-center">
+              <span className="text-xl">🌤️</span>
+            </div>
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">{t("dc_weather_title")}</h2>
+              <p className="text-gray-500 text-sm">{t("dc_weather_sub")}</p>
+            </div>
+          </div>
+
+          {/* Legend */}
+          <div className="flex flex-wrap items-center gap-4 mb-6">
+            <div className="flex items-center gap-2 text-sm">
+              <span className="w-3 h-3 rounded-full bg-primary inline-block" />
+              <span className="text-gray-600 font-medium">{t("dc_weather_best")}</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm">
+              <span className="w-3 h-3 rounded-full bg-teal-400 inline-block" />
+              <span className="text-gray-600 font-medium">{t("dc_weather_open")}: Apr – Oct</span>
+            </div>
+          </div>
+
+          {/* Month cards — horizontal scroll on mobile, wrap on desktop */}
+          <div className="flex overflow-x-auto pb-4 gap-3 snap-x snap-mandatory md:grid md:grid-cols-6 md:overflow-x-visible lg:grid-cols-12 md:gap-3 no-scrollbar">
+            {WEATHER_MONTHS.map((m, i) => {
+              const currentMonth = new Date().getMonth();
+              const isCurrent = i === currentMonth;
+              const barH = Math.round(((m.high - 5) / 35) * 48);
+              return (
+                <motion.div
+                  key={m.month}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-30px" }}
+                  transition={{ duration: 0.4, delay: i * 0.04 }}
+                  className={`relative flex-shrink-0 w-24 snap-start flex flex-col items-center p-3 rounded-2xl border-2 transition-all duration-300 cursor-default
+                    ${isCurrent ? "border-primary shadow-lg shadow-primary/20 scale-105" : m.best ? "border-primary/30 bg-primary/5" : m.hotelOpen ? "border-teal-200 bg-teal-50/50" : "border-gray-100 bg-gray-50 opacity-70"}
+                  `}
+                >
+                  {/* Month */}
+                  <span className={`text-xs font-bold uppercase tracking-widest mb-2 ${isCurrent ? "text-primary" : "text-gray-500"}`}>
+                    {m.month}
+                  </span>
+
+                  {/* Icon */}
+                  <span className="text-2xl mb-2">{m.icon}</span>
+
+                  {/* Temp bar */}
+                  <div className="w-full flex flex-col items-center gap-1 mb-2">
+                    <div className="relative w-5 bg-gray-100 rounded-full overflow-hidden" style={{ height: "48px" }}>
+                      <div
+                        className={`absolute bottom-0 w-full rounded-full transition-all duration-700 ${TEMP_BAR[m.quality]}`}
+                        style={{ height: `${barH}px` }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* High */}
+                  <span className="text-base font-black text-gray-900">{m.high}°</span>
+                  <span className="text-[10px] text-gray-400 font-medium">{t("dc_weather_high")}</span>
+                  <span className="text-xs font-semibold text-gray-500 mt-0.5">{m.low}°</span>
+                  <span className="text-[10px] text-gray-400 font-medium">{t("dc_weather_low")}</span>
+
+                  {/* Sea temp */}
+                  {m.sea ? (
+                    <div className="mt-2 px-2 py-0.5 bg-sky-100 text-sky-700 rounded-full text-[10px] font-bold">
+                      🌊 {m.sea}°
+                    </div>
+                  ) : (
+                    <div className="mt-2 h-5" />
+                  )}
+
+                  {/* Best badge */}
+                  {m.best && (
+                    <div className="mt-1.5 w-full text-center">
+                      <span className="text-[9px] font-bold text-primary uppercase tracking-wide">★ Best</span>
+                    </div>
+                  )}
+                  {isCurrent && (
+                    <div className="absolute -top-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-primary text-white text-[9px] font-bold rounded-full whitespace-nowrap">
+                      Now
+                    </div>
+                  )}
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* Summary strip */}
+          <div className="mt-8 grid sm:grid-cols-3 gap-4">
+            {[
+              { icon: "☀️", label: "Summer (Jun–Aug)", value: "32–34°C", sub: "Peak season, guaranteed sun" },
+              { icon: "🌤️", label: "Shoulder (May & Sep)", value: "26–30°C", sub: "Warm, fewer crowds" },
+              { icon: "🌊", label: "Sea temperature", value: "18–27°C", sub: "Apr – Oct swimable" },
+            ].map((s, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }}
+                className="flex items-center gap-4 p-4 bg-gray-50 rounded-2xl border border-gray-100"
+              >
+                <span className="text-3xl shrink-0">{s.icon}</span>
+                <div>
+                  <p className="text-xs text-gray-500 font-medium">{s.label}</p>
+                  <p className="text-xl font-black text-gray-900">{s.value}</p>
+                  <p className="text-xs text-gray-400">{s.sub}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Local Events & Festivals ─────────────────────────────────────────── */}
+      <section id="events" className="py-16 md:py-20 bg-gray-50">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="flex items-center gap-3 mb-10">
+            <div className="w-10 h-10 rounded-xl bg-rose-100 flex items-center justify-center">
+              <span className="text-xl">🎉</span>
+            </div>
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">{t("dc_events_title")}</h2>
+              <p className="text-gray-500 text-sm">{t("dc_events_sub")}</p>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+            {LOCAL_EVENTS.map((ev, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.45, delay: i * 0.07 }}
+                className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col"
+              >
+                {/* Accent bar */}
+                <div className={`h-1 w-full ${ev.accent}`} />
+
+                <div className="p-5 flex flex-col flex-1">
+                  {/* Month badge + type */}
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">{ev.months}</span>
+                    <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-bold border ${ev.color}`}>{ev.type}</span>
+                  </div>
+
+                  {/* Icon + title */}
+                  <div className="flex items-start gap-3 mb-3">
+                    <span className="text-3xl shrink-0 leading-none">{ev.icon}</span>
+                    <h4 className="font-bold text-gray-900 text-base leading-snug">{ev.title}</h4>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-sm text-gray-500 leading-relaxed flex-1">{ev.desc}</p>
                 </div>
               </motion.div>
             ))}
