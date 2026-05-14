@@ -389,6 +389,13 @@ export default function Home() {
                 fallback: "https://image-tc.galaxy.tf/wijpeg-4okifwi3zambh9ie2231fz2eq/room-details-2wb.jpg?width=800",
                 size: t("room4_size"),
                 desc: t("room4_desc")
+              },
+              {
+                title: t("room5_title"),
+                image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=1170&auto=format&fit=crop",
+                fallback: "https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=1157&auto=format&fit=crop",
+                size: t("room5_size"),
+                desc: t("room5_desc")
               }
             ].map((room, i) => (
               <motion.div 
@@ -467,7 +474,7 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
               { num: "88", label: t("stat_rooms") },
-              { num: "10", label: t("stat_roomtypes") },
+              { num: "5", label: t("stat_roomtypes") },
               { num: "2", label: t("stat_pools") },
               { num: "4★", label: t("stat_rating") }
             ].map((stat, i) => (
@@ -679,6 +686,7 @@ export default function Home() {
                       <SelectItem value="superior-swimup">{t("room2_title")}</SelectItem>
                       <SelectItem value="comfort-mountain">{t("room3_title")}</SelectItem>
                       <SelectItem value="penthouse">{t("room4_title")}</SelectItem>
+                      <SelectItem value="superior-spa">{t("room5_title")}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
